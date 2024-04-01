@@ -14,8 +14,7 @@ class CreateSupportTicketsTable extends Migration
             $table->foreignId('lead_id')->nullable()->constrained()->onDelete('set null');
             $table->text('inquiry_details');
             $table->string('status');
-            $table->string('priority')->nullable();
-            $table->text('resolution_notes')->nullable();
+            $table->text('assignment_details')->nullable();
             $table->timestamps();
         });
     }

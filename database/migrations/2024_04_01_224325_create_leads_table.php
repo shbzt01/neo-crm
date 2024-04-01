@@ -14,6 +14,7 @@ class CreateLeadsTable extends Migration
             $table->string('source');
             $table->text('initial_notes');
             $table->string('status');
+            $table->foreignId('customer_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }
