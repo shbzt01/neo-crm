@@ -27,5 +27,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Define relationships here as per project requirements
+    public function userInfo()
+    {
+        return $this->hasOne(UserInfo::class);
+    }
 }
