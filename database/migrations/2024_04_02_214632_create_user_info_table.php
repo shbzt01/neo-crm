@@ -16,10 +16,10 @@ class CreateUserInfoTable extends Migration
         Schema::create('user_info', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->enum('role', ['admin', 'Support Staff', 'Sales Team'])->default('Support Staff');
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
