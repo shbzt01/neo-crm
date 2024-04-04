@@ -3,6 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Users</h1>
+    <a href="/dashboard/users/create" class="btn btn-success mb-3">Create User</a>
     <div class="row">
         @foreach($users as $user)
             <div class="col-md-4">

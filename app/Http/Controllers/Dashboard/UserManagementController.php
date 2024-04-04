@@ -26,7 +26,15 @@ class UserManagementController extends Controller
 
     public function store(Request $request)
     {
-        // Validate and create user
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6'
+        ]);
+
+        $user = User::create($validatedData);
+
+        return redirect()->route('dashboard.users.index')->with('success', 'User created successfully.');
     }
 
     public function edit(User $user)
@@ -36,6 +44,21 @@ class UserManagementController extends Controller
 
     public function update(Request $request, User $user)
     {
-        // Validate and update user
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+            'password' => 'sometimes|min:6'
+        ]);
+
+        $user->update($validatedData);
+
+        return redirect()->route('dashboard.users.index')->with('success', 'User updated successfully.');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+
+        return redirect()->route('dashboard.users.index')->with('success', 'User deleted successfully.');
     }
 }
