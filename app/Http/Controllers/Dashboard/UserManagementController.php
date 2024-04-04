@@ -10,7 +10,7 @@ class UserManagementController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('Admin');
     }
 
     public function index()

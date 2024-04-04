@@ -20,7 +20,7 @@ Route::post('login', [LoginController::class, 'login']);
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // User Management Routes
-Route::prefix('dashboard')->middleware('admin')->group(function () {
+Route::prefix('dashboard')->middleware('Admin')->group(function () {
     Route::resource('users', UserManagementController::class);
 });
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware('Admin')->name('dashboard');
