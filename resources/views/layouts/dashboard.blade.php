@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
         .sidebar {
             min-height: 100vh;
         }
+
         .footer {
             background-color: #f8f9fa;
             text-align: center;
@@ -16,10 +18,12 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">NEO CRM</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -40,9 +44,19 @@
         <div class="row">
             <div class="col-md-2 sidebar bg-light">
                 <div class="list-group">
-                    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action active">Dashboard</a>
-                    <a href="#" class="list-group-item list-group-item-action">Users</a>
+                    <a href="{{ route('dashboard') }}"
+                        class="list-group-item list-group-item-action @if (request()->route()->uri == 'dashboard') active @endif ">Dashboard</a>
+                    @if (auth()->user()->userInfo->role == 'admin')
+                        <a href="{{ route('dashboard.users.index') }}"
+                            class="list-group-item list-group-item-action @if (str_contains(request()->route()->uri, 'dashboard/users')) active @endif">Users</a>
+                    @endif
                     <a href="#" class="list-group-item list-group-item-action">Settings</a>
+
+                    <button class="list-group-item list-group-item-action" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
             <div class="col-md-10">
@@ -60,4 +74,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

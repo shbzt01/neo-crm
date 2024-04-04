@@ -13,14 +13,14 @@ Route::get('/', function () {
 // Authentication Routes
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 // Route::get('password/reset', [PasswordResetController::class, 'showResetForm'])->name('password.request');
 // Route::post('password/email', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
 
 // Dashboard Route
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // User Management Routes
-Route::prefix('dashboard')->middleware('Admin')->group(function () {
-    Route::resource('users', UserManagementController::class);
+Route::prefix('dashboard')->name('dashboard.')->middleware(['Admin','auth'])->group(function () {
+    Route::resource('users', UserManagementController::class)->names('users');
 });
-Route::get('dashboard', [DashboardController::class, 'index'])->middleware('Admin')->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['Admin','auth'])->name('dashboard');

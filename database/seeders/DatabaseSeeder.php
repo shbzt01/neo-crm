@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         // Create first admin user
         $user = User::create([
             'name' => 'Admin',
-            'email' => 'admin@example.com',
+            'email' => 'admin@neo-crm.com',
             'password' => bcrypt('password'),
         ]);
 
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         UserInfo::create([
             'user_id' => $user->id,
             'address' => '123 Admin St.',
-            'role' => 'Admin',
+            'role' => 'admin',
             'phone' => '123-456-7890'
         ]);
     }

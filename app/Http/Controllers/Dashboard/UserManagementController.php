@@ -29,7 +29,8 @@ class UserManagementController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'role' => 'required|in:admin, Sales team, Support Staff'
         ]);
 
         $user = User::create($validatedData);
@@ -47,7 +48,8 @@ class UserManagementController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => 'sometimes|min:6'
+            'password' => 'sometimes|min:6',
+            'role' => 'required|in:admin, Sales team, Support Staff'
         ]);
 
         $user->update($validatedData);
