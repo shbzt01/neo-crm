@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dashboard\UserManagementController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,3 +18,8 @@ Route::post('password/email', [PasswordResetController::class, 'sendResetLinkEma
 
 // Dashboard Route
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// User Management Routes
+Route::prefix('dashboard')->middleware('admin')->group(function () {
+    Route::resource('users', UserManagementController::class);
+});
