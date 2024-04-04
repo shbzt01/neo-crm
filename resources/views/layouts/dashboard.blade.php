@@ -40,12 +40,13 @@
         <div class="row">
             <div class="col-md-2 sidebar bg-light">
                 <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action active">Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action active">Dashboard</a>
                     <a href="#" class="list-group-item list-group-item-action">Users</a>
                     <a href="#" class="list-group-item list-group-item-action">Settings</a>
                 </div>
             </div>
             <div class="col-md-10">
+                <br>
                 <div class="container">
                     @yield('content')
                 </div>

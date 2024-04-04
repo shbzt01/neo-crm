@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
         UserInfo::create([
             'user_id' => $user->id,
             'address' => '123 Admin St.',
-            'phone_number' => '123-456-7890'
+            'role' => 'Admin',
+            'phone' => '123-456-7890'
         ]);
     }
 }

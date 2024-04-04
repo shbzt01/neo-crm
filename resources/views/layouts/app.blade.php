@@ -29,7 +29,9 @@
                             <a class="nav-link" href="#">About</a>
                         </li>
                     </ul>
+                    <a class="nav-link" href="{{route('login')}}">
                     <button class="btn btn-outline-success" type="submit">Login</button>
+                    </a>
                 </div>
             </div>
         </nav>
