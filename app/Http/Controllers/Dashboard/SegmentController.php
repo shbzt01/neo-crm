@@ -10,7 +10,7 @@ class SegmentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'role:Admin,SalesManager']);
+        $this->middleware(['auth', 'Admin','SalesTeam']);
     }
 
     public function index()

@@ -51,7 +51,7 @@
                             class="list-group-item list-group-item-action @if (str_contains(request()->route()->uri, 'dashboard/users')) active @endif">Users</a>
                     @endif
                     <a href="{{ route('dashboard.customers.index') }}" class="list-group-item list-group-item-action">Customers</a>
-                    <a href="{{ route('dashboard.segments.index') }}" class="list-group-item list-group-item-action">Segments</a>
+                    {{-- <a href="{{ route('dashboard.segments.index') }}" class="list-group-item list-group-item-action">Segments</a> --}}
                     <a href="#" class="list-group-item list-group-item-action">Settings</a>
 
                     <button class="list-group-item list-group-item-action" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>

@@ -10,7 +10,7 @@ class CustomerController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'role:Admin,SalesTeam,SupportStaff']);
+        $this->middleware(['auth', 'Admin','SalesTeam','SupportStaff']);
     }
 
     public function index()
