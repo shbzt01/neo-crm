@@ -11,7 +11,7 @@ class SupportStaffMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        if ($user && $user->user_info->role == 'Support Staff') {
+        if ($user && ($user->userInfo->role == 'Support Staff' || $user->userInfo->role == 'admin')) {
             return $next($request);
         }
 

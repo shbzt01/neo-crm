@@ -21,6 +21,12 @@
                     <td>
                         <a href="{{ route('dashboard.customers.edit', $customer->id) }}" class="btn btn-sm btn-primary">Edit</a>
                         <a href="{{ route('dashboard.customers.show', $customer->id) }}" class="btn btn-sm btn-success">View</a>
+                        <form action="{{ route('dashboard.customers.destroy', $customer->id) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+
                     </td>
                 </tr>
                 @endforeach

@@ -32,10 +32,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Docs</a>
                 </li>
             </ul>
         </div>
@@ -47,11 +44,13 @@
                     <a href="{{ route('dashboard') }}"
                         class="list-group-item list-group-item-action @if (request()->route()->uri == 'dashboard') active @endif ">Dashboard</a>
                     @if (auth()->user()->userInfo->role == 'admin')
-                        <a href="{{ route('dashboard.users.index') }}"
-                            class="list-group-item list-group-item-action @if (str_contains(request()->route()->uri, 'dashboard/users')) active @endif">Users</a>
+                    <a href="{{ route('dashboard.users.index') }}"
+                    class="list-group-item list-group-item-action @if (str_contains(request()->route()->uri, 'dashboard/users')) active @endif">Users</a>
                     @endif
-                    <a href="{{ route('dashboard.customers.index') }}" class="list-group-item list-group-item-action">Customers</a>
-                    {{-- <a href="{{ route('dashboard.segments.index') }}" class="list-group-item list-group-item-action">Segments</a> --}}
+                    @if (auth()->user()->userInfo->role == 'admin' || auth()->user()->userInfo->role == 'Sales Team')
+                    <a href="{{ route('dashboard.customers.index') }}" class="list-group-item list-group-item-action @if (str_contains(request()->route()->uri, 'dashboard/customers')) active @endif">Customers</a>
+                    <a href="{{ route('dashboard.segments.index') }}" class="list-group-item list-group-item-action @if (str_contains(request()->route()->uri, 'dashboard/segments')) active @endif">Segments</a>
+                    @endif
                     <a href="#" class="list-group-item list-group-item-action">Settings</a>
 
                     <button class="list-group-item list-group-item-action" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</button>

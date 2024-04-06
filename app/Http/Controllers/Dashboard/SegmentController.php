@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Segment;
+use App\Models\CustomerSegment;
 
 class SegmentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'Admin','SalesTeam']);
+        $this->middleware(['auth', 'SalesTeam']);
     }
 
     public function index()
     {
-        $segments = Segment::all();
+        $segments = CustomerSegment::all();
         return view('dashboard.segments.index', compact('segments'));
     }
 
@@ -26,27 +26,27 @@ class SegmentController extends Controller
 
     public function store(Request $request)
     {
-        Segment::create($request->all());
+        CustomerSegment::create($request->all());
         return redirect()->route('dashboard.segments.index');
     }
 
-    public function show(Segment $segment)
+    public function show(CustomerSegment $segment)
     {
         return view('dashboard.segments.show', compact('segment'));
     }
 
-    public function edit(Segment $segment)
+    public function edit(CustomerSegment $segment)
     {
         return view('dashboard.segments.edit', compact('segment'));
     }
 
-    public function update(Request $request, Segment $segment)
+    public function update(Request $request, CustomerSegment $segment)
     {
         $segment->update($request->all());
         return redirect()->route('dashboard.segments.index');
     }
 
-    public function destroy(Segment $segment)
+    public function destroy(CustomerSegment $segment)
     {
         $segment->delete();
         return redirect()->route('dashboard.segments.index');

@@ -18,6 +18,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
     Route::resource('users', UserManagementController::class)->names('users');
     Route::resource('customers', CustomerController::class);
-    // Route::resource('segments', SegmentController::class);
+    Route::resource('segments', SegmentController::class);
 });
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');

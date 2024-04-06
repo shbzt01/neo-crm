@@ -11,7 +11,7 @@ class SalesTeamMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
-        if ($user && $user->user_info->role == 'Sales Team') {
+        if ($user && ($user->userInfo->role == 'Sales Team' || $user->userInfo->role == 'admin')) {
             return $next($request);
         }
 

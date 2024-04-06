@@ -14,7 +14,7 @@ class CreateCustomerSegmentsTable extends Migration
     public function up()
     {
         Schema::create('customer_segments', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
