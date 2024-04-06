@@ -50,6 +50,7 @@
                     @if (auth()->user()->userInfo->role == 'admin' || auth()->user()->userInfo->role == 'Sales Team')
                     <a href="{{ route('dashboard.customers.index') }}" class="list-group-item list-group-item-action @if (str_contains(request()->route()->uri, 'dashboard/customers')) active @endif">Customers</a>
                     <a href="{{ route('dashboard.segments.index') }}" class="list-group-item list-group-item-action @if (str_contains(request()->route()->uri, 'dashboard/segments')) active @endif">Segments</a>
+                    <a href="{{ route('dashboard.leads.index') }}" class="list-group-item list-group-item-action">Sales and Lead Management</a>
                     @endif
                     <a href="#" class="list-group-item list-group-item-action">Settings</a>
 
